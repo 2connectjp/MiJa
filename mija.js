@@ -11,9 +11,9 @@
 
     }
 
-    Mija.prototype.setSource = function(element) {
+    Mija.prototype.setSource = function(source) {
 
-        this.source = element;
+        this.source = source;
 
     };
 
