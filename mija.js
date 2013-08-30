@@ -6,6 +6,7 @@
         this.EOL        = '\r\n';
         this.source     = null;
         this.javascript = "";
+        this.iteration  = 0;
 
     }
 
@@ -38,7 +39,7 @@
         for (var i = 0; i < cLength; i++) {
 
             var child       = elm.children[i];
-            var elmName     = child.dataset.mijaname || "elm" + i;
+            var elmName     = child.dataset.mijaname || "elm" + this.iteration;
             var attrs       = child.attributes;
 
             this.appendOutput("var " + elmName + " = document.createElement('" + child.tagName.toLowerCase() + "');");
@@ -59,6 +60,8 @@
 
             }
 
+            //Insure unique element name. FOREVER.
+            this.iteration++;
             this.getChildren(elm.children[i], elmName);
 
         }
