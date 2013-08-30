@@ -2,13 +2,13 @@
 
     window.Mija     = Mija;
 
-    function Mija(source, target) {
+    function Mija() {
 
         this.iteration  = 0;
         this.EOL        = '\r\n';
 
-        this.source = source || null;
-        this.target = target || null;
+        this.source     = null;
+        this.javascript = "";
 
     }
 
@@ -18,11 +18,6 @@
 
     };
 
-    Mija.prototype.setTarget= function(element) {
-
-        this.target = element;
-
-    };
 
     Mija.prototype.toJavascript = function () {
 
@@ -34,7 +29,7 @@
     Mija.prototype.stringToDom = function () {
 
         var tempElm         = document.createElement('div');
-        tempElm.innerHTML   = this.source.value;
+        tempElm.innerHTML   = this.source;
 
         return tempElm;
 
@@ -78,7 +73,7 @@
 
     Mija.prototype.appendOutput = function (string) {
 
-        this.target.value += string + this.EOL;
+        this.javascript += string + this.EOL;
 
     };
 

@@ -23,11 +23,6 @@
     </style>
 </head>
 <body>
-<h1>MIJA - HTML to JS</h1>
-<p>
-    HTML goes left.
-    Javascript appears right.
-</p>
 <div class="container">
     <div id="html" class="block">
 
@@ -47,15 +42,14 @@
 <script>
 
     var start   = document.getElementById('mijaStart');
+    var target  = document.getElementById('jsField');
     var mija    = new Mija();
-
-    mija.setSource(document.getElementById('mijaField'));
-    mija.setTarget(document.getElementById('jsField'));
 
     start.onclick = function () {
 
-        mija.target.value = "";
+        mija.setSource(document.getElementById('mijaField').value);
         mija.toJavascript();
+        target.value = mija.javascript;
 
     }
 
