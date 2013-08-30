@@ -3,9 +3,7 @@
 
     function Mija() {
 
-        this.iteration  = 0;
         this.EOL        = '\r\n';
-
         this.source     = null;
         this.javascript = "";
 
@@ -21,7 +19,6 @@
     Mija.prototype.toJavascript = function () {
 
         this.getChildren(this.stringToDom());
-        this.iteration = 0;
 
     };
 
@@ -36,25 +33,23 @@
 
     Mija.prototype.getChildren = function (elm, parent) {
 
-        var i       = null;
         var cLength = elm.children.length;
 
-        for (i = 0; i < cLength; i++) {
+        for (var i = 0; i < cLength; i++) {
 
             var child       = elm.children[i];
-            var elmName     = child.dataset.mijaname || "elm" + this.iteration;
+            var elmName     = child.dataset.mijaname || "elm" + i;
+            var attrs       = child.attributes;
 
             this.appendOutput("var " + elmName + " = document.createElement('" + child.tagName.toLowerCase() + "');");
 
-            if (child.id) {
+            for (var j = 0; j < attrs.length; j++) {
 
-                this.appendOutput(elmName + ".id = '" + child.id + "';");
+                if(attrs[j].nodeName !== "data-mijaname") {
 
-            }
+                    this.appendOutput(elmName + ".setAttribute('" + attrs[j].nodeName + "', '" + attrs[j].nodeValue + "')");
 
-            if (child.className) {
-
-                this.appendOutput(elmName + ".className = '" + child.className + "';");
+                }
 
             }
 
@@ -64,7 +59,6 @@
 
             }
 
-            this.iteration++;
             this.getChildren(elm.children[i], elmName);
 
         }
