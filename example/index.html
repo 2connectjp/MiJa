@@ -1,0 +1,65 @@
+<html>
+<head>
+    <style>
+
+        textarea {
+
+            height: 300px;
+            width: 400px;
+
+        }
+
+        .block {
+
+            vertical-align: top;
+            display: inline-block;
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>MIJA - HTML => JS</h1>
+<p>
+    HTML goes left.
+    Javascript appears right.
+</p>
+<div class="container">
+    <div id="html" class="block">
+
+        <h3>HTML</h3>
+        <textarea id="mijaField"></textarea>
+        <button id="mijaStart">Convert</button>
+    </div>
+    <div id="javascript" class="block">
+
+        <h3>Javascript</h3>
+        <textarea id="jsField"></textarea>
+
+    </div>
+
+</div>
+<script src='../mija.js'></script>
+<script>
+
+    var start   = document.getElementById('mijaStart');
+    var mija    = new Mija();
+
+    mija.setSource(document.getElementById('mijaField'));
+    mija.setTarget(document.getElementById('jsField'));
+
+    start.onclick = function () {
+
+        mija.target.value = "";
+        mija.toJavascript();
+
+    }
+
+</script>
+</body>
+
+</html>
