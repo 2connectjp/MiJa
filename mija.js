@@ -1,6 +1,5 @@
-(function(window) {
+(function (window) {
 
-    window.Mija     = Mija;
 
     function Mija() {
 
@@ -37,28 +36,29 @@
 
     Mija.prototype.getChildren = function (elm, parent) {
 
+        var i       = null;
         var cLength = elm.children.length;
 
-        for(var i = 0; i < cLength; i++) {
+        for (i = 0; i < cLength; i++) {
 
             var child       = elm.children[i];
             var elmName     = child.dataset.mijaname || "elm" + this.iteration;
 
             this.appendOutput("var " + elmName + " = document.createElement('" + child.tagName.toLowerCase() + "');");
 
-            if(child.id) {
+            if (child.id) {
 
                 this.appendOutput(elmName + ".id = '" + child.id + "';");
 
             }
 
-            if(child.className) {
+            if (child.className) {
 
                 this.appendOutput(elmName + ".className = '" + child.className + "';");
 
             }
 
-            if(parent !== undefined) {
+            if (parent !== undefined) {
 
                 this.appendOutput(parent + ".appendChild(" + elmName + ");");
 
@@ -77,4 +77,6 @@
 
     };
 
-})(window);
+    window.Mija     = Mija;
+
+}(window));
