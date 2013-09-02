@@ -48,7 +48,7 @@
 
                 if(attrs[j].nodeName !== "data-mijaname") {
 
-                    this.appendOutput(elmName + ".setAttribute('" + attrs[j].nodeName + "', '" + attrs[j].nodeValue + "')");
+                    this.appendOutput(elmName + ".setAttribute('" + attrs[j].nodeName + "', '" + attrs[j].nodeValue + "');");
 
                 }
 
