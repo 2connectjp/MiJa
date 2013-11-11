@@ -44,6 +44,12 @@
 
             this.appendOutput("var " + elmName + " = document.createElement('" + child.tagName.toLowerCase() + "');");
 
+            if (child.textContent) {
+
+                this.appendOutput(elmName + ".textContent = " + child.textContent + ";");
+
+            }
+
             for (var j = 0; j < attrs.length; j++) {
 
                 if(attrs[j].nodeName !== "data-mijaname") {
