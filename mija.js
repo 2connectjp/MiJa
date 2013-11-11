@@ -46,7 +46,7 @@
 
             if (child.textContent) {
 
-                this.appendOutput(elmName + ".textContent = " + child.textContent + ";");
+                this.appendOutput(elmName + ".textContent = '" + child.textContent + "';");
 
             }
 
